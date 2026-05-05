@@ -10,9 +10,6 @@ on:
 #  pull_request:
 #    branches: [ main ]
   workflow_dispatch:
-
-permissions:
-  contents: write
   
 jobs:
   build:
@@ -22,24 +19,6 @@ jobs:
       packages: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      
-      - name: Clone Dockerfile
-        run: |
-          wget -O Dockerfile https://raw.githubusercontent.com/opendatalab/MinerU/refs/heads/master/docker/china/Dockerfile
-
-      - name: Delete model download
-        run: sed -i '\|RUN /bin/bash -c "mineru-models-download -s modelscope -m all"|d' Dockerfile
-        
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          branch: main
-          commit_message: ':arrow_up: update latest WorkerVless2sub'
-          commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
-          push_options: '--set-upstream'
-          
       - name: Checkout repository
         uses: actions/checkout@v4
           
