@@ -22,10 +22,16 @@ jobs:
       
       - name: Clone Dockerfile
         run: |
-          wget -O Dockerfile https://raw.githubusercontent.com/opendatalab/MinerU/refs/heads/master/docker/china/Dockerfile
+          wget -O Dockerfile https://raw.githubusercontent.com/opendatalab/MinerU/refs/heads/master/docker/global/Dockerfile
 
       - name: Delete model download
-        run: sed -i '\|RUN /bin/bash -c "mineru-models-download -s modelscope -m all"|d' Dockerfile
+        run: sed -i '\|RUN /bin/bash -c "mineru-models-download -s huggingface -m all"|d' Dockerfile
+        
+      - name: Clone for app
+        run: cp Dockerfile ./app/Dockerfile
+        
+      - name: Change base image
+        run: sed -i 's|FROM vllm/vllm-openai:v0.11.2|FROM python:3.10-slim|g' ./app/Dockerfile
         
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v5
