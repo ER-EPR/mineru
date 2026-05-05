@@ -1,7 +1,7 @@
-# Use the official vllm image for gpu with Volta、Turing、Ampere、Ada Lovelace、Hopper、Blackwell architecture (7.0 <= Compute Capability <= 12.0)
+FROM python:3.10-slim
 # Compute Capability version query (https://developer.nvidia.com/cuda-gpus)
 # support x86_64 architecture and ARM(AArch64) architecture
-FROM python:3.10-slim
+FROM vllm/vllm-openai:v0.11.2
 
 # Install libgl for opencv support & Noto fonts for Chinese characters
 RUN apt-get update && \
@@ -14,6 +14,7 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+RUN python3 -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --no-cache-dir --break-system-packages
 # Install mineru latest
 RUN python3 -m pip install -U 'mineru[core]>=3.0.0' --break-system-packages && \
     python3 -m pip cache purge
