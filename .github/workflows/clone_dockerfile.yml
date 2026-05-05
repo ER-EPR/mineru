@@ -31,7 +31,7 @@ jobs:
         run: cp Dockerfile ./app/Dockerfile
         
       - name: Change base image
-        run: sed -i '1c\FROM python:3.10-slim' ./app/Dockerfile
+        run: sed -i '4c\FROM python:3.10-slim' ./app/Dockerfile
         
       - name: Change base image
         run: sed -i '16a\RUN python3 -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --no-cache-dir --break-system-packages' ./app/Dockerfile
