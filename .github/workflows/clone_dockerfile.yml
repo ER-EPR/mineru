@@ -37,7 +37,7 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v5
         with:
           branch: main
-          commit_message: ':arrow_up: update latest WorkerVless2sub'
+          commit_message: ':arrow_up: update latest mineru dockerfile'
           commit_author: 'github-actions[bot] <github-actions[bot]@users.noreply.github.com>'
           push_options: '--set-upstream'
 
