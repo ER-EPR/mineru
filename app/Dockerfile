@@ -1,7 +1,7 @@
-FROM python:3.10-slim
+# Use the official vllm image for gpu with Volta、Turing、Ampere、Ada Lovelace、Hopper、Blackwell architecture (7.0 <= Compute Capability <= 12.0)
 # Compute Capability version query (https://developer.nvidia.com/cuda-gpus)
 # support x86_64 architecture and ARM(AArch64) architecture
-FROM vllm/vllm-openai:v0.11.2
+FROM python:3.10-slim
 
 # Install libgl for opencv support & Noto fonts for Chinese characters
 RUN apt-get update && \
