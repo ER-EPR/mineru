@@ -14,7 +14,6 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-RUN python3 -m pip install torch torchvision --index-url https://download.pytorch.org/whl/cpu --no-cache-dir --break-system-packages
 # Install mineru latest
 RUN python3 -m pip install -U 'mineru[core]>=3.0.0' --break-system-packages && \
     python3 -m pip cache purge
