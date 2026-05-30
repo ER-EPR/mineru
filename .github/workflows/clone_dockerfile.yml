@@ -24,6 +24,9 @@ jobs:
         run: |
           wget -O Dockerfile https://raw.githubusercontent.com/opendatalab/MinerU/refs/heads/master/docker/global/Dockerfile
 
+      - name: Replace cuda13 to cuda12
+        run: sed -i 's|vllm/vllm-openai:[a-zA-Z0-9_.-]*|&-cu129|g' Dockerfile
+        
       - name: Delete model download
         run: sed -i '\|RUN /bin/bash -c "mineru-models-download -s huggingface -m all"|d' Dockerfile
         
