@@ -2,8 +2,8 @@
 # The default base image uses vLLM 0.21.0 with CUDA 13.0. For CUDA 12.9 environments, switch to the commented cu129 image below.
 # Compute Capability version query (https://developer.nvidia.com/cuda-gpus)
 # support x86_64 architecture and ARM(AArch64) architecture
-FROM vllm/vllm-openai:v0.21.0-cu129
-# FROM vllm/vllm-openai:v0.21.0-cu129-cu129
+FROM vllm/vllm-openai:v0.18.1
+# FROM vllm/vllm-openai:v0.18.1
 
 # Install libgl for opencv support & Noto fonts for Chinese characters
 RUN apt-get update && \
