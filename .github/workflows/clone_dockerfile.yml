@@ -34,7 +34,7 @@ jobs:
         run: cp Dockerfile ./app/Dockerfile
         
       - name: Change base image
-        run: sed -i '4c\FROM python:3.10-slim' ./app/Dockerfile
+        run: sed -i 's|vllm/vllm-openai:[a-zA-Z0-9_.-]*|python:3.10-slim|g' ./app/Dockerfile
          
       - name: Replace core to gradio
         run: sed -i 's/mineru\[core\]/mineru\[gradio\]/g' ./app/Dockerfile
