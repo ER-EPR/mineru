@@ -34,6 +34,12 @@ jobs:
         
       - name: Delete model download
         run: sed -i '\|RUN /bin/bash -c "mineru-models-download -s huggingface -m all"|d' Dockerfile
+
+      - name: Optimize image size for http-client frontend
+        run: |
+          # 1. Add --no-cache-dir to the main pip install
+          sed -i "s|pip install -U 'mineru\[|pip install --no-cache-dir -U 'mineru[|g" Dockerfile
+          sed -i 's|apt-get install -y|apt-get install -y --no-install-recommends|g' Dockerfile
         
       - name: Clone for app
         run: cp Dockerfile ./app/Dockerfile
