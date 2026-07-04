@@ -9,6 +9,8 @@ on:
 #  pull_request:
 #    branches: [ main ]
   workflow_dispatch:
+  schedule:
+    - cron: '10 1 3 */2 *' # Optional: Automatically runs every Sunday at midnight to grab upstream updates
   
 jobs:
   build:
