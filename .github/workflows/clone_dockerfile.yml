@@ -20,7 +20,9 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4with:
+          # Tell checkout to use your PAT instead of the default GITHUB_TOKEN
+          token: ${{ secrets.GH_PAT }}
       
       - name: Clone Dockerfile
         run: |
